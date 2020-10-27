@@ -14,6 +14,23 @@
   <% if post.user_id == @user.id %>
   <div>
     <h4><%= post.user.first_name %> <%= post.user.last_name %> </h4>
+<p>About me: <%= @user.bio %></p>
+<p><% if @user.avatar.attached? %>
+  <image src="<%=(url_for(@user.avatar))%>"></image>
+<% end %></p>
+
+
+<%= form_for @post do |form| %>
+  <%= form.label "What's on your mind?" %><br>
+  <%= form.text_field :message %><br>
+  <%= form.submit "Submit" %>
+<% end %>
+
+
+<% @posts.reverse.each do |post| %>
+  <% if post.user_id == @user.id %>
+  <div>
+    <h4><%= post.user.first_name %> <%= post.user.last_name %>: </h4>
     <p><%= post.updated_at.strftime("%d/%m/%Y %k:%M") %></p>
     <h5><%= post.message %></h5>
     <div>
