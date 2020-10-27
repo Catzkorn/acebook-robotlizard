@@ -1,6 +1,6 @@
 <% post.comments.each do |comment| %>
 
-<h2><%= comment.user.first_name %> <%= comment.user.last_name %>:</h2>
+<h2><a href="/users/<%=comment.user.id%>   "><%= comment.user.first_name %> <%= comment.user.last_name %></a></h2>
 <h5><%= comment.content %></h5>
 
 

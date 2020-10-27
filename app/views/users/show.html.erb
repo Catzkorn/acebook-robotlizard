@@ -1,8 +1,19 @@
 <h1> <%= @user.first_name %> <%=@user.last_name%> </h1>
+
+
+
+<%if current_user.id != @user.id%>
+  <%= render :partial => "./friendships/user_friendship", locals: { user_id: @user.id, user: @user }%> 
+<%end%>
+
+<%if current_user.id == @user.id%>
+<%= render :partial => "./posts/create_post", locals: { post: @post}%>
+<%end%>
+
 <% @posts.reverse.each do |post| %>
   <% if post.user_id == @user.id %>
   <div>
-    <h4><%= post.user.first_name %> <%= post.user.last_name %>: </h4>
+    <h4><%= post.user.first_name %> <%= post.user.last_name %> </h4>
     <p><%= post.updated_at.strftime("%d/%m/%Y %k:%M") %></p>
     <h5><%= post.message %></h5>
     <div>

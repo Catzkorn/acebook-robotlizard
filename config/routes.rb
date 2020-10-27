@@ -6,8 +6,15 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
 
+  resources :friendships do
+    member do
+      put "addfriend", to: "friendships#addfriend"
+      put "unfriend", to: "friendships#unfriend"
+    end
+  end
   resources :posts
   resources :comments
+
   resources :users
 
   resources :posts do

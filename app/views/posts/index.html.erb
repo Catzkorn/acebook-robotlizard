@@ -4,16 +4,14 @@
 <br>
 
 
-<%= form_for @post do |form| %>
-  <%= form.label "What's on your mind?" %><br>
-  <%= form.text_field :message %><br>
-  <%= form.submit "Submit" %>
-<% end %>
+
+
+<%= render :partial => "/posts/create_post", locals: { post: @post}%>
 
 
 <% @posts.reverse.each do |post| %>
   <div>
-    <h4><%= post.user.first_name %> <%= post.user.last_name %>: </h4>
+    <h4><a href="/users/<%=post.user.id%>   "><%= post.user.first_name %> <%= post.user.last_name %></a> </h4>
     <p><%= post.created_at.strftime("%d/%m/%Y %k:%M") %></p>
     <h5><%= post.message %></h5>
     <div>
