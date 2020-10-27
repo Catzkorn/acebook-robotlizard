@@ -1,4 +1,16 @@
-<h1> <%= @user.first_name %> <%=@user.last_name%> </h1>
+
+
+
+  <% if current_user.id == @user.id %>
+  <div>
+    <h4><%= current_user.first_name %> <%= current_user.last_name %> </h4>
+    <p>About me: <%= current_user.bio %></p>
+  <%else%>
+  <h1> <%= @user.first_name %> <%=@user.last_name%></h1>  
+  <%end%>
+  <p><% if current_user.avatar.attached? %>
+    <image src="<%=(url_for(current_user.avatar))%>"></image>
+  <% end %></p>
 
 
 
@@ -10,21 +22,9 @@
 <%= render :partial => "./posts/create_post", locals: { post: @post}%>
 <%end%>
 
-<% @posts.reverse.each do |post| %>
-  <% if post.user_id == @user.id %>
-  <div>
-    <h4><%= post.user.first_name %> <%= post.user.last_name %> </h4>
-<p>About me: <%= @user.bio %></p>
-<p><% if @user.avatar.attached? %>
-  <image src="<%=(url_for(@user.avatar))%>"></image>
-<% end %></p>
 
 
-<%= form_for @post do |form| %>
-  <%= form.label "What's on your mind?" %><br>
-  <%= form.text_field :message %><br>
-  <%= form.submit "Submit" %>
-<% end %>
+
 
 
 <% @posts.reverse.each do |post| %>
