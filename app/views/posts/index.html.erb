@@ -1,15 +1,23 @@
 
 <head>
 <link rel="stylesheet" href="/assets/iconstyles.css">
+<link rel="stylesheet" href="/assets/poststyles.css">
 </head>
+
+<div class="create-post">
 <%= render :partial => "/posts/create_post", locals: { post: @post}%>
+</div>
 
 <br>
 
 <% @posts.reverse.each do |post| %>
 
+<div class="view-posts">
    <%= render :partial => "./posts/view_posts", locals: { post: post}%> <br>
-    <%= render :partial => "./likes/like_button", locals: { post: post, post_id: post.id}%> <br>
+</div>
+
+
+    <%= render :partial => "./likes/post_like_button", locals: { post: post, post_id: post.id}%> <br>
      <%= render :partial => "./comments/comment_form", locals: { comment: @comment, post_id: post.id}%> <br>
      <%= render :partial => "./comments/display_comment", locals: { comment: @comment, post: post}%> 
 
