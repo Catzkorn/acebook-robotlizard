@@ -1,31 +1,27 @@
-<head>
-<link rel="stylesheet" href="/assets/iconstyles.css">
-</head>
 
 <% post.comments.each do |comment| %>
 
-<%if current_user.id == comment.user.id%>
+<%# Displays edit and delete on comments if they were made by the logged in user %>
+    <%if current_user.id == comment.user.id%>
 
-<div class="comment">
-    <h5><a href="/users/<%=comment.user.id%>   "><%= comment.user.first_name %> <%= comment.user.last_name %></a></h5>
-    <h6><%= comment.content %></h6>
-    <%= comment.created_at.strftime("%d/%m/%Y")%> at <%= comment.created_at.strftime("%k:%M") %><br>
-</div>
+<%# Renders each comment %>
+        <%= render :partial => "./comments/user_comment", locals: {comment: comment}%> <br>
 
-<%= render :partial => "./comments/comment_edit_delete", locals: { comment_id: comment.id, comment: comment}%> 
+<%# Renders comment edit and delete button %>
+        <%= render :partial => "./comments/comment_edit_delete", locals: { comment_id: comment.id, comment: comment}%> 
+
+<%# Renders a comment like button %>
+        <%= render :partial => "./likes/comment_like_button", locals: { comment: comment}%> <br><br>
         
+    <%else%>
 
-<%else%>
+<%# Renders each comment %>
+        <%= render :partial => "./comments/user_comment", locals: {comment: comment}%> <br>
 
-<div class="comment">
-    <h5><a href="/users/<%=comment.user.id%>   "><%= comment.user.first_name %> <%= comment.user.last_name %></a></h5>
-    <h6><%= comment.content %></h6>
-    <%= comment.created_at.strftime("%d/%m/%Y")%> at <%= comment.created_at.strftime("%k:%M") %><br>
-</div>
+<%# Renders a comment like button %>
+        <%= render :partial => "./likes/comment_like_button", locals: { comment: comment}%> <br>
+    <%end%>
 
-<%end%>
-
-<%= render :partial => "./likes/comment_like_button", locals: { comment: comment}%> <br>
 <% end %>
-      </div>
+    
 
