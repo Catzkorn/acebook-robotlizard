@@ -13,25 +13,45 @@
 <h2>AceBook___</h2>
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>
-    <%= link_to 'Home',posts_path, :class => 'navbar-link' %> |
-    <%= link_to 'My Profile', user_path(current_user.id), :method => :get, :class => 'navbar-link' %> |
-
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= link_to posts_path, :method => :get do %> 
+    <div class="button-icons">
+    <button type="button" class="btn btn-primary"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg></button> </div>
+     <% end %> 
+    
+     |
+    <%= link_to user_path(current_user.id), :method => :get do %> 
+    <div class="button-icons">
+    <button type="button" class="btn btn-primary"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg></button> </div>
+     <% end %> 
+  
+    
+    |
 
 
 <%if current_user.requested_friends.size >= 1 %>
     <%= link_to requests_user_path(current_user), method: :get do %> 
-    <button type="button" class="badge badge-primary"> Friends Requests <span class="badge"><%= current_user.requested_friends.size %> </span></button>
-     <% end %> 
+    <div class="button-icons">
+    <button type="button" class="badge badge-primary"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path></svg><span class="badge"><%= current_user.requested_friends.size %> </span></button>
+     <% end %> </div>
   <%else%>
    <%= link_to requests_user_path(current_user), method: :get do %> 
-    <button type="button" class="badge badge-primary"> View Friends</button>
-  <%end%>
-<%end%>|
+   <div class="button-icons">
+    <button type="button" class="badge badge-primary"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path></svg></button>
+  <%end%></div>
+<%end%>
+
+|
+
+    <%= link_to edit_user_registration_path, :method => :get do %> 
+    <div class="button-icons">
+    <button type="button" class="badge badge-primary"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg> </button> </div>
+     <% end %> 
 
 
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-   
+    <%= link_to  destroy_user_session_path, method: :delete do  %>
+   <div class="button-icons">
+    <button type="button" class="badge badge-primary"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path></svg></button> </div>
+     <% end %> 
    
   <% else %>
     <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
