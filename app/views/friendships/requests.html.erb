@@ -1,9 +1,12 @@
 
 
-<h2>Pending Friend Requests</h2>
 
-<%# Renders friends requests that are pending %>
+
+<%# Renders friends requests that are pending if there are any %>
+<%if current_user.requested_friends.size >= 1 %>
+<h2>Pending Friend Requests</h2>
   <%= render :partial => "/friendships/pending", locals: { pending: @pending}%> <br>
+<%end%>
 
 <h2>Friends</h2>
 
