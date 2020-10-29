@@ -1,4 +1,6 @@
-<% @blocked.each do |user| %>
+<%# Friendships controller: Requests: @blocked %>
+
+<% blocked.each do |user| %>
   
   <%# Displays each blocked user %>
     <a href="/users/<%=user.id%>"><%= user.first_name %> <%= user.last_name %></a> 
