@@ -1,15 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel= "stylesheets" href="style-theme.css" />
+</head>
+
+  <div class='container'>
+    <div class='row'>
+       <div class='col-8 mx-auto'>
+          <div class="text-center">
+
+    
 
 <%# Create Post Form %>
 <%= render :partial => "/posts/create_post", locals: { post: @post}%>
 
 <br>
 
-<%# Itterates through every post %>
-<% @posts.each do |post| %>
 
+<%# Itterates through every post %>
+  <div class='post'>
+    <div class='post-meta'>
+  
+  <% @posts.each do |post| %>
+    
 <%# Renders the post %>
    <%= render :partial => "./posts/view_posts", locals: { post: post}%> 
-
+  
 <%# Renders the like button for the post %>
      <%= render :partial => "./likes/post_like_button", locals: { post: post}%> <br><br>
 
@@ -22,7 +39,10 @@
 
   <br><br>
 <% end %>
-
-
-
+      </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
 
