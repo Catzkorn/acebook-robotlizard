@@ -1,11 +1,11 @@
 
 <% post.comments.each do |comment| %>
-    <div class='single-comment'>
+    
 
 <%# Displays edit and delete on comments if they were made by the logged in user %>
     <%if current_user.id == comment.user.id%>
         
-
+<div class='single-comment'>
 <%# Renders each comment %>
         <%= render :partial => "./comments/user_comment", locals: {comment: comment}%> 
 
@@ -14,15 +14,15 @@
 
 <%# Renders a comment like button %>
         <%= render :partial => "./likes/comment_like_button", locals: { comment: comment}%> 
-</div>        
+       </div> 
     <%else%>
-
+<div class='single-comment'>
 <%# Renders each comment %>
         <%= render :partial => "./comments/user_comment", locals: {comment: comment}%> 
 
 <%# Renders a comment like button %>
         <%= render :partial => "./likes/comment_like_button", locals: { comment: comment}%> 
-     
+     </div> 
    <%end%>
 
 <% end %>

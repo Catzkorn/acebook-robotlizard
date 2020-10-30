@@ -58,7 +58,7 @@ https://riptutorial.com/ruby-on-rails/example/6137/change-an-existing-column-s-t
 
 ### Contructing classes
 
-- This gems facilitated the creation of our User class 
+- Devise: this gems facilitated the creation of our User class, where functionalities like create user, sign in, sign up and logout functions were implemented as well as the ability to send emails to users. Configurations must be done in the database and in the general views to adjust to our needs. 
 
 ### Styling
 
