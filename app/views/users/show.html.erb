@@ -16,7 +16,7 @@
    <div id="profile-photo">   
   <%# Displays a profile image if one uploaded, else displays an emoji%>
       <% if @user.avatar.attached? %>
-        <image src="<%=(url_for(@user.avatar))%>"></image>
+        <img src="<%=(url_for(@user.avatar.variant(resize: "400x400")))%>">
       <%else%>
         <p>🤦</p>
       <% end %><br>
